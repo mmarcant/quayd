@@ -95,7 +95,7 @@ func (r *GitHubStatusesRepository) Create(status *Status) error {
 
 	_, _, err := r.RepositoriesService.CreateStatus(
 		c[0],
-		c[1],
+		"verbling",
 		status.Ref,
 		st,
 	)
