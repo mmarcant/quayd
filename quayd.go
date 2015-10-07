@@ -121,7 +121,7 @@ func (cr *commitResolver) Resolve(repo, short string) (string, error) {
 // github.Client.
 type GitHubCommitResolver struct {
 	RepositoriesService interface {
-		GetCommit(owner, "verbling", sha string) (*github.RepositoryCommit, *github.Response, error)
+		GetCommit(owner, repo, sha string) (*github.RepositoryCommit, *github.Response, error)
 	}
 }
 
@@ -131,7 +131,7 @@ func (cr *GitHubCommitResolver) Resolve(repo, short string) (string, error) {
 	c := strings.Split(repo, "/")
 	cm, _, err := cr.RepositoriesService.GetCommit(
 		c[0],
-		c[1],
+		"verbling",
 		short,
 	)
 	if err != nil {
