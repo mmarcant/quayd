@@ -92,7 +92,7 @@ func (r *GitHubStatusesRepository) Create(status *Status) error {
 
 	// Split `owner/repo` into ["owner", "repo"].
 	c := strings.Split(status.Repo, "/")
-	c[1] = "verbling"
+
 	_, _, err := r.RepositoriesService.CreateStatus(
 		c[0],
 		c[1],
@@ -121,7 +121,7 @@ func (cr *commitResolver) Resolve(repo, short string) (string, error) {
 // github.Client.
 type GitHubCommitResolver struct {
 	RepositoriesService interface {
-		GetCommit(owner, repo, sha string) (*github.RepositoryCommit, *github.Response, error)
+		GetCommit(owner, "verbling", sha string) (*github.RepositoryCommit, *github.Response, error)
 	}
 }
 
