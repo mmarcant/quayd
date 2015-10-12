@@ -92,7 +92,7 @@ func (r *GitHubStatusesRepository) Create(status *Status) error {
 
 	// Split `owner/repo` into ["owner", "repo"].
 	c := strings.Split(status.Repo, "/")
-	
+
 	_, _, err := r.RepositoriesService.CreateStatus(
 		c[0],
 		c[1],
@@ -129,7 +129,6 @@ type GitHubCommitResolver struct {
 func (cr *GitHubCommitResolver) Resolve(repo, short string) (string, error) {
 	// Split `owner/repo` into ["owner", "repo"].
 	c := strings.Split(repo, "/")
-
 	cm, _, err := cr.RepositoriesService.GetCommit(
 		c[0],
 		c[1],
